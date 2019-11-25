@@ -1,0 +1,11 @@
+.hander {
+  cursor: pointer;
+}
+
+/********** Botão flutuante *************/
+.floating-button {
+  right: 15px;
+  bottom: 15px;
+  position: fixed;
+  z-index: 1;
+}

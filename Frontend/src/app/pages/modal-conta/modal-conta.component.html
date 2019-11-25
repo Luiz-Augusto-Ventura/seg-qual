@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h4 *ngIf="!id" class="modal-title">Registrando conta</h4>
+  <h4 *ngIf="id" class="modal-title">Alterando conta</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <form #formConta=ngForm novalidate>
+    <label for="tipo">Tipo</label>
+    <select [(ngModel)]="conta.tipo" name="tipo" id="tipo" class="form-control">
+      <option value="p" selected>A pagar</option>
+      <option value="r">A receber</option>
+    </select>
+
+    <label for="descricao">Descrição</label>
+    <input type="text" [(ngModel)]="conta.descricao" name="descricao" id="descricao"
+    class="form-control" required>
+
+    <label for="valor">Valor</label>
+    <input type="number" [(ngModel)]="conta.valor" name="valor" id="valor"
+    class="form-control" required>
+
+    <label for="lancamento">Data de lançamento</label>
+    <input type="text" [(ngModel)]="conta.lancamento"
+    name="lancamento" id="lancamento"class="form-control" required>
+
+    <label for="vencimento">Data de vencimento</label>
+    <input type="text" [(ngModel)]="conta.vencimento"
+    name="vencimento" id="vencimento" class="form-control" required>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button *ngIf="id" type="button" class="btn btn-info" (click)="alterar()"
+    [disabled]="!formConta.valid">
+      Salvar
+  </button>
+
+  <button *ngIf="!id" type="button" class="btn btn-info" (click)="registrar()"
+    [disabled]="!formConta.valid">
+      Registrar
+  </button>
+</div>

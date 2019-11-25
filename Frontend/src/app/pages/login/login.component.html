@@ -1,0 +1,13 @@
+<div>
+  <form #formLogin=ngForm novalidate (ngSubmit)="login(formLogin.value)">
+
+    <label for="inputNome">Nome</label>
+    <input type="text" id="inputNome" name="nome" ngModel>
+    <br><br>
+    <label for="inputSenha">Senha</label>
+    <input type="text" id="inputSenha" name="senha" ngModel>
+    <br><br>
+
+    <button type="submit">Entrar</button>
+  </form>
+</div>
