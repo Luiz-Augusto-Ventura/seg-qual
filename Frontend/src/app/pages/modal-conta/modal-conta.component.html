@@ -33,12 +33,12 @@
 </div>
 
 <div class="modal-footer">
-  <button *ngIf="id" type="button" class="btn btn-info" (click)="alterar()"
+  <button *ngIf="id" type="button" class="btn btn-primary" (click)="alterar()"
     [disabled]="!formConta.valid">
       Salvar
   </button>
 
-  <button *ngIf="!id" type="button" class="btn btn-info" (click)="registrar()"
+  <button *ngIf="!id" type="button" class="btn btn-primary" (click)="registrar()"
     [disabled]="!formConta.valid">
       Registrar
   </button>

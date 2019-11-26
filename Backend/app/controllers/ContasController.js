@@ -13,8 +13,19 @@ module.exports = {
                 return res.status(404).json({ reason: err });
             });
         }
-        else {
-            Conta.findAll({})
+        if(req.query.li && req.query.lf) {
+            let li = req.query.li.split('/');
+            li = new Date(Date.UTC( parseInt(li[2]), (parseInt(li[1]) -1), parseInt(li[0]) ));
+            let lf = req.query.lf.split('/');
+            lf = new Date(Date.UTC( parseInt(lf[2]), (parseInt(lf[1]) -1), parseInt(lf[0]) ));
+
+            Conta.findAll({
+                where: {
+                    lancamento: {
+                        [Op.between]: [li, lf]
+                    }
+                }
+            })
             .then(contas => {
                 return res.status(200).json(contas);
             })
@@ -22,6 +33,36 @@ module.exports = {
                 return res.status(404).json({ reason: err });
             });
         }
+        if(req.query.vi && req.query.vf) {
+            let vi = req.query.vi.split('/');
+            vi = new Date(Date.UTC( parseInt(vi[2]), (parseInt(vi[1]) -1), parseInt(vi[0]) ));
+            let vf = req.query.vf.split('/');
+            vf = new Date(Date.UTC( parseInt(vf[2]), (parseInt(vf[1]) -1), parseInt(vf[0]) ));
+
+            Conta.findAll({
+                where: {
+                    vencimento: {
+                        [Op.between]: [vi, vf]
+                    }
+                }
+            })
+            .then(contas => {
+                return res.status(200).json(contas);
+            })
+            .catch(err => {
+                return res.status(404).json({ reason: err });
+            });
+        }
+       
+        //Se não existe nenhum tipo dos parâmetros verificados acima
+        Conta.findAll({})
+        .then(contas => {
+            return res.status(200).json(contas);
+        })
+        .catch(err => {
+            return res.status(404).json({ reason: err });
+        });
+     
     },
 
     create(req, res) {     

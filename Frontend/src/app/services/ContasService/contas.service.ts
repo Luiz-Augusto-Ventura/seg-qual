@@ -35,4 +35,12 @@ export class ContasService {
     return this.http.delete(`${this.api}/?id=${id}`).toPromise();
   }
 
+  filtrarDataLancamento(di: string, df: string): Promise<any> {
+    return this.http.get(`${this.api}/?li=${di}&lf=${df}`).toPromise();
+  }
+
+  filtrarDataVencimento(di: string, df: string): Promise<any> {
+    return this.http.get(`${this.api}/?vi=${di}&vf=${df}`).toPromise();
+  }
+
 }

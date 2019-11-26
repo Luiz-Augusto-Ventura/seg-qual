@@ -76,4 +76,8 @@ export class HomeComponent implements OnInit {
     this.getContas();
   }
 
+  filtrarData(opcoesFiltro: any) {
+    console.log(opcoesFiltro);
+  }
+
 }
