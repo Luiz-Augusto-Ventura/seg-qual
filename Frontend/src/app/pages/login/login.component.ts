@@ -35,4 +35,17 @@ export class LoginComponent implements OnInit {
       console.log(err);
     })
   }
+
+  registrar(usuario: any) {
+    this.loginService.signin(usuario)
+    .then(u => {
+      if(u) {
+        alert('Usuário cadastrado com sucesso');
+      }
+    })
+    .catch(err => {
+      alert('Erro ao cadastrar usuário');
+      console.log(err);
+    });
+  }
 }
