@@ -3,7 +3,7 @@ const Conta = db.Conta;
 const Op = db.Sequelize.Op;
 
 module.exports = {
-    list(req, res) {
+    async list(req, res) {
         if (req.query.id) {
             Conta.findByPk(req.query.id)
             .then(conta => {
@@ -15,9 +15,9 @@ module.exports = {
         }
         if(req.query.li && req.query.lf) {
             let li = req.query.li.split('/');
-            li = new Date(Date.UTC( parseInt(li[2]), (parseInt(li[1]) -1), parseInt(li[0]) ));
+            li = await new Date(Date.UTC( parseInt(li[2]), (parseInt(li[1]) -1), parseInt(li[0]) ));
             let lf = req.query.lf.split('/');
-            lf = new Date(Date.UTC( parseInt(lf[2]), (parseInt(lf[1]) -1), parseInt(lf[0]) ));
+            lf = await new Date(Date.UTC( parseInt(lf[2]), (parseInt(lf[1]) -1), parseInt(lf[0]) ));
 
             Conta.findAll({
                 where: {
@@ -35,9 +35,9 @@ module.exports = {
         }
         if(req.query.vi && req.query.vf) {
             let vi = req.query.vi.split('/');
-            vi = new Date(Date.UTC( parseInt(vi[2]), (parseInt(vi[1]) -1), parseInt(vi[0]) ));
+            vi = await new Date(Date.UTC( parseInt(vi[2]), (parseInt(vi[1]) -1), parseInt(vi[0]) ));
             let vf = req.query.vf.split('/');
-            vf = new Date(Date.UTC( parseInt(vf[2]), (parseInt(vf[1]) -1), parseInt(vf[0]) ));
+            vf = await new Date(Date.UTC( parseInt(vf[2]), (parseInt(vf[1]) -1), parseInt(vf[0]) ));
 
             Conta.findAll({
                 where: {

@@ -76,8 +76,47 @@ export class HomeComponent implements OnInit {
     this.getContas();
   }
 
-  filtrarData(opcoesFiltro: any) {
-    console.log(opcoesFiltro);
+  async filtrarData(opcoesFiltro: any) {
+    let consulta;
+    switch(opcoesFiltro.tipo) {
+      case 'l':
+        consulta = await this.contasService.
+          filtrarDataLancamento(opcoesFiltro.dataInicial, opcoesFiltro.dataFinal)
+          .then(contas => {
+            return contas;
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        break;
+      case 'v':
+        consulta = await this.contasService.
+          filtrarDataVencimento(opcoesFiltro.dataInicial, opcoesFiltro.dataFinal)
+          .then(contas => {
+            return contas;
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        break;
+      default:
+        console.log("Opção inválida! 'l' para LANÇAMENTO e 'v' para VENCIMENTO!");
+    }
+
+    if(consulta) {
+      this.contas = consulta.map(c => {
+        const id = c.id;
+        const tipo = c.tipo;
+        const descricao = c.descricao;
+        const valor = c.valor;
+        const lancamento = c.lancamento;
+        const vencimento = c.vencimento;
+        const quitada = c.quitada;
+
+        return { id, tipo, descricao, valor, lancamento, vencimento, quitada };
+      });
+    }
+
   }
 
 }

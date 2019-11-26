@@ -26,7 +26,7 @@
   <form #formFiltro=ngForm novalidate class="form-row" (ngSubmit)="filtrarData(formFiltro.value)">
       <label for="dataInical" class="col-2">Data inical</label>
       <div class="form-group col-2">
-          <input type="text" name="dataInical" id="dataInical" class="form-control" required ngModel>
+          <input type="text" name="dataInicial" id="dataInicial" class="form-control" required ngModel>
       </div>
 
       <label for="dataFinal" class="col-2">Data final</label>
@@ -36,7 +36,7 @@
 
       <select class="form-control col-2" name="tipo" required ngModel>
         <option value="l" selected>Lançamento</option>
-        <option value="v">vencimento</option>
+        <option value="v">Vencimento</option>
       </select>
 
       <div class="form-group col-2">

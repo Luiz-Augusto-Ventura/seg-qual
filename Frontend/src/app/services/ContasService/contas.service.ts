@@ -40,6 +40,7 @@ export class ContasService {
   }
 
   filtrarDataVencimento(di: string, df: string): Promise<any> {
+    console.log(di, df);
     return this.http.get(`${this.api}/?vi=${di}&vf=${df}`).toPromise();
   }
 
