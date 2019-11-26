@@ -1,0 +1,17 @@
+.login-container {
+  height: 100%;
+  display: flex; /*Permite trabalhar com FlexBox layouy*/
+  justify-content: center; /*Alinha o item horizontalmente ao centro */
+  align-items: center; /*Alinha o item verticalmente ao centro*/
+}
+
+.login-container form {
+  width: 100%;
+  max-width: 300px; /*Se eu acessar em um dispositivo com menos de 300px de largura, ele ocupa 100%
+  da tela.*/
+  display: flex;
+  flex-direction: column; /*Faz os elementos do form estejam um abaixo do outro. Os elementos vão
+  seguir em coluna. */
+}
+
+
