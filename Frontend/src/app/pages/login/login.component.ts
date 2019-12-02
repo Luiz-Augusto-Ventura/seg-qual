@@ -20,7 +20,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(usuario: any) {
-    this.loginService.login(usuario)
+    const login = {
+      nome: this.sqlInjectionFilter(usuario.nome),
+      senha: this.sqlInjectionFilter(usuario.senha)
+    };
+    this.loginService.login(login)
     .then(u => {
       if(u.nome) {
         this.loginService.setUsuarioLogado(u.nome);
@@ -37,7 +41,11 @@ export class LoginComponent implements OnInit {
   }
 
   registrar(usuario: any) {
-    this.loginService.signin(usuario)
+    const login = {
+      nome: this.sqlInjectionFilter(usuario.nome),
+      senha: this.sqlInjectionFilter(usuario.senha)
+    };
+    this.loginService.signin(login)
     .then(u => {
       if(u) {
         alert('Usuário cadastrado com sucesso');
@@ -47,5 +55,9 @@ export class LoginComponent implements OnInit {
       alert('Erro ao cadastrar usuário');
       console.log(err);
     });
+  }
+
+  sqlInjectionFilter(login: string): string {
+    return login.replace("'", '').replace(';', '').replace('#', '');
   }
 }
