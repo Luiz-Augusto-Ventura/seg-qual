@@ -68,7 +68,7 @@ export class ModalContaComponent implements OnInit {
     });
   }
 
-  formataData(data: any): string {
+  public formataData(data: any): string {
     let dataFormatada = data.slice(0, 10);
     dataFormatada = dataFormatada.split('-');
     dataFormatada = dataFormatada[2] + '/' + dataFormatada[1] + '/' + dataFormatada[0];

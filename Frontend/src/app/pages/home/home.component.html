@@ -48,7 +48,7 @@
   <div>
     <button class="btn btn-primary floating-button align-middle" (click)="modalConta()">
       <span><i class="material-icons align-middle">add</i></span>
-        Novo
+        Nova
     </button>
   </div>
 
@@ -102,6 +102,11 @@
             </div>
 
           </div>
+
+          <div class="text-center">
+            <p><b class="text-primary">Total a pagar: </b><b>{{total.pagar}}</b></p>
+            <p><b class="text-primary">Média a pagar: </b><b>{{media.pagar}}</b></p>
+          </div>
         </div>
 
       </ng-template>
@@ -153,6 +158,11 @@
 
             </div>
 
+          </div>
+
+          <div class="text-center">
+            <p><b class="text-primary">Total a receber: </b><b>{{total.receber}}</b></p>
+            <p><b class="text-primary">Média a receber: </b><b>{{media.receber}}</b></p>
           </div>
         </div>
 

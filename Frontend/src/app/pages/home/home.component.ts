@@ -5,6 +5,7 @@ import { ContasService } from 'src/app/services/ContasService/contas.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContaComponent } from '../modal-conta/modal-conta.component';
 import { ModalAcaoComponent } from '../modal-acao/modal-acao.component';
+import { nextTick } from 'q';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,8 @@ export class HomeComponent implements OnInit {
 
   usuario = '';
   contas = [{}];
+  total = {};
+  media = {};
 
   constructor(
     private loginService: LoginService,
@@ -34,6 +37,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.total = this.calculaContas();
+    this.media = this.calculaMediaContas();
   }
 
   logout() {
@@ -54,10 +59,41 @@ export class HomeComponent implements OnInit {
 
         return { id, tipo, descricao, valor, lancamento, vencimento, quitada };
       });
+      this.total = this.calculaContas();
+      this.media = this.calculaMediaContas();
     })
     .catch(err => {
       console.log(err);
     });
+  }
+
+  calculaContas() {
+    let pagar = 0;
+    let receber = 0;
+    this.contas.forEach(conta => {
+      if(!conta['quitada']) {
+        if((conta['tipo'] == 'p'))
+          pagar += conta['valor'];
+        else
+          receber += conta['valor'];
+      }
+    });
+
+    return { pagar: pagar, receber: receber };
+  }
+
+  calculaMediaContas() {
+    const qtdPagar = this.contas.reduce((a, b) => {
+      return a + ((b.tipo == 'p') ? 1 : 0);
+    }, 0);
+
+    const qtdReceber = this.contas.reduce((a, b) => {
+      return a + ((b.tipo == 'r') ? 1 : 0);
+    }, 0);
+
+    const somatorias = this.calculaContas();
+
+    return { pagar: (somatorias.pagar/qtdPagar), receber: (somatorias.receber/qtdReceber) };
   }
 
   modalConta(id: number) {
