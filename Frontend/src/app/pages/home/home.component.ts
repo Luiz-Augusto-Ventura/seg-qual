@@ -83,17 +83,16 @@ export class HomeComponent implements OnInit {
   }
 
   calculaMediaContas() {
-    const qtdPagar = this.contas.reduce((a, b) => {
-      return a + ((b.tipo == 'p') ? 1 : 0);
-    }, 0);
+    const qtdPagar = this.contas.filter(c => (c['quitada'] == false) && (c['tipo'] == 'p')).length;
 
-    const qtdReceber = this.contas.reduce((a, b) => {
-      return a + ((b.tipo == 'r') ? 1 : 0);
-    }, 0);
+    const qtdReceber = this.contas.filter(c => (c['quitada']) == false && (c['tipo'] == 'r')).length;
 
     const somatorias = this.calculaContas();
 
-    return { pagar: (somatorias.pagar/qtdPagar), receber: (somatorias.receber/qtdReceber) };
+    return {
+      pagar: (qtdPagar > 0 ? (somatorias.pagar / qtdPagar) : 0),
+      receber: (qtdReceber > 0 ? (somatorias.receber / qtdReceber) : 0)
+    };
   }
 
   modalConta(id: number) {

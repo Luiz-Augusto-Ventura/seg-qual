@@ -4,7 +4,7 @@ import { ModalContaComponent } from './modal-conta.component';
 import { ContasService } from 'src/app/services/ContasService/contas.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-fdescribe('Testes sobre o componente ModalConta', () => {
+describe('Testes sobre o componente ModalConta', () => {
   let conta: ModalContaComponent;
   let contasService: ContasService;
   let modal: NgbActiveModal;

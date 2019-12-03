@@ -1,25 +1,41 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
+import { LoginService } from 'src/app/services/LoginService/login.service';
+import { Router } from '@angular/router';
 
-describe('LoginComponent', () => {
+fdescribe('LoginComponent', () => {
   let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
-  }));
+  let loginService: LoginService;
+  let router: Router;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new LoginComponent(loginService, router);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Teste 1 do filtro de SQL Injection', () => {
+    expect(component.sqlInjectionFilter("'; OR ''='")).toEqual(" OR ");
+  });
+
+  it('Teste 2 do filtro de SQL Injection', () => {
+    expect(component.sqlInjectionFilter(
+      "'; UPDATE FROM seg_qual.pessoas SET senha='123456' WHERE id > 0 AND '' = '"
+      )).toEqual(" UPDATE FROM seg_qualpessoas SET senha123456 WHERE id  0 AND   ");
+  });
+
+  it('Teste 3 do filtro de SQL Injection', () => {
+    expect(component.sqlInjectionFilter(
+      "'; DELETE FROM seg_qual.pessoas WHERE id > 0 AND '' = '"
+      )).toEqual(" DELETE FROM seg_qualpessoas WHERE id  0 AND   ");
+  });
+
+  it('Teste 4 do filtro de SQL Injection', () => {
+    expect(component.sqlInjectionFilter("'; DROP TABLE seg_qual.contas #"))
+    .toEqual(" DROP TABLE seg_qualcontas ");
+  });
+
+  it('Teste 5 do filtro de SQL Injection', () => {
+    expect(component.sqlInjectionFilter("'; DROP DATABASE seg_qual #"))
+    .toEqual(" DROP DATABASE seg_qual ");
   });
 });
