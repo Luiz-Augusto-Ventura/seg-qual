@@ -1,3 +1,5 @@
+Projeto desenvolvido para as disciplinas de Qualidade de Software II e Segurança Computacional do curso de Computação(8º Período), onde fora solicitado pela professora Camila testes simples de SQL Injection e implementação de testes automatizados simples. Para a execução dos testes de SQL Injection, foi criada uma vunerabilidade intencional no Sequelize, onde é uma *raw query* é utilizada sem filtrar os dados de entrada. Já para os testes automatizados, foi utilizado o Test Runner **Karma** e o framework **Jasmine**.  
+
 #### Passo a passo de execução
 
 ##### Banco de dados
