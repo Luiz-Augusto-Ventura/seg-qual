@@ -58,6 +58,6 @@ export class LoginComponent implements OnInit {
   }
 
   sqlInjectionFilter(login: string): string {
-    return login.replace(/[';#.><=]/g, '')
+    return login.replace(/[';#.><=]/g, '');
   }
 }

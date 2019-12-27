@@ -4,7 +4,7 @@ import { LoginComponent } from './login.component';
 import { LoginService } from 'src/app/services/LoginService/login.service';
 import { Router } from '@angular/router';
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let loginService: LoginService;
   let router: Router;

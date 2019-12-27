@@ -15,7 +15,7 @@ describe('Testes sobre o componente ModalConta', () => {
   });
 
   it('Data ok 1', () => {
-    expect(conta.formataData('2019-11-22T00:00:00.000Z')).toEqual('22/11/2019');
+    expect(conta.formataData('2019-11-22T00:00:00.000Z')).toEqual('22-11-2019');
   });
 
   it('Data ok 2', () => {
@@ -23,8 +23,8 @@ describe('Testes sobre o componente ModalConta', () => {
   });
 
   it('Data ok 3', () => {
-    expect(conta.formataData('2019/11/21T00:00:00.000Z')).toEqual('21-11-2019');
-    //expect(conta.formataData('2019-11-21T00:00:00.000Z')).toEqual('21/11/2019');
+    //expect(conta.formataData('2019/11/21T00:00:00.000Z')).toEqual('21-11-2019');
+    expect(conta.formataData('2019-11-21T00:00:00.000Z')).toEqual('21/11/2019');
   });
 
   it('Data ok 4', () => {
@@ -32,7 +32,7 @@ describe('Testes sobre o componente ModalConta', () => {
   });
 
   it('Data ok 5', () => {
-    expect(conta.formataData('2019-11-23T00:00:00.000Z')).toEqual('22-11-2019');
-    //expect(conta.formataData('2019-11-23T00:00:00.000Z')).toEqual('23/11/2019');
+    //expect(conta.formataData('2019-11-23T00:00:00.000Z')).toEqual('22-11-2019');
+    expect(conta.formataData('2019-11-23T00:00:00.000Z')).toEqual('23/11/2019');
   });
 });
