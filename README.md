@@ -20,7 +20,7 @@ Executar o comando **ng serve --open** no terminal.
 
 ![Página inicial](Screenshots/pagina_inicial.jpg)
 
-![Registrar conta](Screenshots/criar_conta.jpg)
+![Registrar conta](Screenshots/nova_conta.jpg)
 
 ![Alterar conta](Screenshots/alterar_conta.jpg)
 
