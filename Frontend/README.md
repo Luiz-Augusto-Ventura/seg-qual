@@ -18,6 +18,8 @@ Angular: 8.2.14
 ... language-service, platform-browser, platform-browser-dynamic
 ... router
 
+-----------------------------------------------------------
+
 Package -> Version
 
 -----------------------------------------------------------
