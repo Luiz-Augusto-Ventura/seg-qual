@@ -15,3 +15,12 @@ Opção 2: Executar o comando **node app/index.js**. Roda o servidor da maneira 
 
 ##### Aplicação Anuglar
 Executar o comando **ng serve --open** no terminal.
+
+#### Capturas de tela 
+
+![Página inicial](Screenshots/pagina_inicial.jpg)
+
+![Registrar conta](Screenshots/nova_conta.jpg)
+
+![Alterar conta](Screenshots/alterar_conta.jpg)
+
